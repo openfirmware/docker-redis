@@ -1,10 +1,18 @@
 FROM ubuntu:trusty
 MAINTAINER James Badger <james@jamesbadger.ca>
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv C7917B12
-RUN echo "deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu quantal main" >> /etc/apt/sources.list
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server pwgen
+# Install Redis.
+RUN \
+  cd /tmp && \
+  wget http://download.redis.io/redis-stable.tar.gz && \
+  tar xvzf redis-stable.tar.gz && \
+  cd redis-stable && \
+  make && \
+  make install && \
+  cp -f src/redis-sentinel /usr/local/bin && \
+  mkdir -p /etc/redis && \
+  cp -f *.conf /etc/redis && \
+  rm -rf /tmp/redis-stable*
 
 # Add scripts
 ADD run.sh /run.sh
