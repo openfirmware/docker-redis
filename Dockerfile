@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM dockerfile/ubuntu
 MAINTAINER James Badger <james@jamesbadger.ca>
 
 # Install Redis.
