@@ -22,7 +22,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y pwgen
 ADD run.sh /run.sh
 ADD set_redis_password.sh /set_redis_password.sh
 ADD set_redis_mode.sh /set_redis_mode.sh
+ADD set_redis_workdir.sh /set_redis_workdir.sh
 RUN chmod 755 /*.sh
+
+# Define mountable directories.
+VOLUME ["/data"]
+
+# Define working directory.
+WORKDIR /data
 
 EXPOSE 6379
 CMD ["/run.sh"]

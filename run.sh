@@ -1,4 +1,8 @@
 #!/bin/bash
+
+if [ ! -f /.redis_workdir_set ]; then
+	/set_redis_workdir.sh
+fi
 if [ ! -f /.redis_mode_set ]; then
 	/set_redis_mode.sh
 fi
