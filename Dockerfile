@@ -14,7 +14,11 @@ RUN \
   cp -f *.conf /etc/redis && \
   rm -rf /tmp/redis-stable*
 
-# Add scripts
+# Install supplementary packages.
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y pwgen
+
+# Add scripts.
 ADD run.sh /run.sh
 ADD set_redis_password.sh /set_redis_password.sh
 ADD set_redis_mode.sh /set_redis_mode.sh
