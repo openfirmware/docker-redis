@@ -62,4 +62,5 @@ This image runs Redis using a custom `.conf` file, which only overrides certain 
 
 ## Credits
 
-[Original docker-redis repository](https://github.com/tutumcloud/tutum-docker-redis) created by tutum.co
+* [dockerfile/redis](https://github.com/dockerfile/redis)
+* [Original docker-redis repository](https://github.com/tutumcloud/tutum-docker-redis) created by tutum.co
