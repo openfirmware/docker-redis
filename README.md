@@ -2,6 +2,14 @@
 
 Base docker image to run a Redis server built from Redis stable.
 
+## Building a tagged release from Github
+
+As an alternative to the [Docker Index](https://index.docker.io/), an image can be created from my Github repository:
+
+	# docker build -t openfirmware/redis github.com/openfirmware/docker-redis.git
+
+Once built, the image will be available locally as `openfirmware/redis`. The command can be re-run to update the image with any changes to the Dockerfile.
+
 ## Running the Redis server
 
 Run the following command to start Redis:
@@ -50,7 +58,7 @@ More info at: http://redis.io/topics/lru-cache
 
 ## Custom Configuration
 
-This image runs Redis using a custom `.conf` file, which only overrides certain settings; the original `/etc/redis/redis.conf` file is ignored.
+This image runs Redis using a custom `.conf` file, which only overrides certain settings; the original [`/etc/redis/redis.conf`](http://download.redis.io/redis-stable/redis.conf) file is ignored.
 
 ## Credits
 
