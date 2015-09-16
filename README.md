@@ -12,6 +12,12 @@ Once built, the image will be available locally as `openfirmware/redis`. The com
 
 ## Running the Redis server
 
+Redis highly recommends enabling VM memory overcommit. Docker cannot do this on a container-only basis, it must be enabled on your Docker host system. To immediately enable it:
+
+	# sysctl vm.overcommit_memory=1
+
+If the value is not set, or is set to 0, then this container will still run but [background saves by Redis might fail](http://redis.io/topics/faq#background-saving-is-failing-with-a-fork-error-under-linux-even-if-i39ve-a-lot-of-free-ram). If you have already started docker-redis with overcommit disabled, you can stop the container with docker, set the overcommit setting on your docker host, and then start your docker-redis container again.
+
 Run the following command to start Redis:
 
 	# docker run -d -p 6379:6379 openfirmware/redis
